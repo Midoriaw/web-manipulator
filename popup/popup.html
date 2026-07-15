@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Web Manipulator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="wm-header">
+    <span class="wm-logo">🧩 Web Manipulator</span>
+    <button id="toggle-editor" class="wm-toggle-btn">Включить редактор</button>
+  </header>
+
+  <nav class="wm-tabs">
+    <button class="wm-tab active" data-tab="media">Медиа</button>
+    <button class="wm-tab" data-tab="api">API</button>
+    <button class="wm-tab" data-tab="collections">Коллекции</button>
+    <button class="wm-tab" data-tab="settings">Настройки</button>
+  </nav>
+
+  <main>
+    <section id="tab-media" class="wm-panel active">
+      <div id="media-list" class="wm-list">
+        <p class="wm-empty">Пока ничего не найдено. Обновите страницу или проиграйте видео/аудио.</p>
+      </div>
+    </section>
+
+    <section id="tab-api" class="wm-panel">
+      <div id="api-list" class="wm-list">
+        <p class="wm-empty">Пока не перехвачено ни одного XHR/fetch запроса.</p>
+      </div>
+    </section>
+
+    <section id="tab-collections" class="wm-panel">
+      <div id="collections-list" class="wm-list">
+        <p class="wm-empty">Коллекция пуста. Кликните по элементу на странице → «Сохранить в коллекцию».</p>
+      </div>
+    </section>
+
+    <section id="tab-settings" class="wm-panel">
+      <label class="wm-setting-row">
+        <span>Тема интерфейса</span>
+        <select id="theme-select">
+          <option value="auto">Как в Firefox</option>
+          <option value="light">Светлая</option>
+          <option value="dark">Тёмная</option>
+        </select>
+      </label>
+      <label class="wm-setting-row">
+        <span>Горячая клавиша</span>
+        <code>Ctrl/Cmd + Shift + E</code>
+      </label>
+      <p class="wm-hint">Версия 0.1.0 (MVP)</p>
+    </section>
+  </main>
+
+  <script src="popup.js"></script>
+</body>
+</html>

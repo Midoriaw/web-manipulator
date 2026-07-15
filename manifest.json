@@ -1,0 +1,71 @@
+{
+  "manifest_version": 2,
+  "name": "Web Manipulator",
+  "version": "0.1.0",
+  "description": "Визуальный редактор любой веб-страницы: замена картинок, правка текста, скачивание медиа, анализ API — без единой строчки кода.",
+  "author": "Web Manipulator Team",
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "web-manipulator@example.com",
+      "strict_min_version": "109.0"
+    }
+  },
+
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs",
+    "activeTab",
+    "storage",
+    "unlimitedStorage",
+    "downloads",
+    "contextMenus",
+    "clipboardWrite"
+  ],
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "48": "icons/icon-48.png"
+    },
+    "default_title": "Web Manipulator"
+  },
+
+  "commands": {
+    "toggle-selector": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Включить/выключить режим визуального редактора"
+    }
+  },
+
+  "web_accessible_resources": [
+    "icons/*"
+  ],
+
+  "content_security_policy": "script-src 'self'; object-src 'self'"
+}
